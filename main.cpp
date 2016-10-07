@@ -1,13 +1,18 @@
 #include <QApplication>
-#include "stringwidget.h"
+#include "formwidget.h"
 int main (int argc , char **argv)
 {
 
     QApplication app(argc,argv);
 
+    QFile file(":test.json");
+    if (file.open( QIODevice::ReadOnly)){
 
-    StringWidget * w = new StringWidget(QByteArray("{\"type\":\"string\", \"title\":\"Email\",\"required\":true}"));
-    w->show();
+    FormWidget * widget = new FormWidget( QJsonDocument::fromJson(file.readAll()));
+    widget->show();
+
+    }
+
 
 
 

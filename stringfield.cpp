@@ -1,34 +1,31 @@
-#include "stringwidget.h"
+#include "stringfield.h"
 
-StringWidget::StringWidget(const QJsonObject& schema, QWidget * parent)
-    :QWidget(parent)
+StringField::StringField(const QJsonObject& schema, QWidget * parent)
+    :AbstractField(parent)
 {
 
-    parseSchema(schema);
+    init(schema);
 
 }
 
-StringWidget::StringWidget(const QByteArray &json, QWidget *parent)
-    :QWidget(parent)
+StringField::StringField(const QByteArray &json, QWidget *parent)
+    :AbstractField(parent)
 {
-
 
     QJsonParseError err;
     QJsonObject obj = QJsonDocument::fromJson(json,&err).object();
 
     if (err.error == QJsonParseError::NoError)
-        parseSchema(obj);
-
+        init(obj);
 
 }
 
-void StringWidget::parseSchema(const QJsonObject &schema)
+void StringField::parseSchema(const QJsonObject &schema)
 {
 
     if (schema.value("type") != "string")
         qDebug()<<Q_FUNC_INFO<<" wrong schema";
 
-    QFormLayout * formLayout = new QFormLayout;
 
     QString title = tr("Unknown");
 
@@ -54,9 +51,11 @@ void StringWidget::parseSchema(const QJsonObject &schema)
         mEdit->setText(schema.value("default").toString());
 
 
-    formLayout->addRow(title, mEdit);
-    setLayout(formLayout);
+    QHBoxLayout * formLayout = new QHBoxLayout;
+    formLayout->addWidget(mEdit);
+    formLayout->setContentsMargins(0,0,0,0);
 
+    setLayout(formLayout);
 
 
 

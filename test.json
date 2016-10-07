@@ -1,0 +1,35 @@
+{
+ 
+"variable": {
+  "type":"object",
+  "title":"test",
+  "properties": {
+    "age1": {"type":"string","title":"boby"},
+    "age2": {"type":"string","title":"boby"},
+    "age3": {"type":"string","title":"boby"}
+     
+  }
+},
+
+
+ "author": {
+    "type": "object",
+    "title": "Author",
+    "properties": {
+      "name": {
+        "type": "string",
+        "title": "Name"
+      },
+      "gender": {
+        "type": "string",
+        "title": "Gender"
+      },
+      "magic": {
+        "type": "integer",
+        "title": "Magic number",
+        "default": 42
+      }
+    }
+  }
+}
+

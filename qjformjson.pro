@@ -2,8 +2,18 @@ QT += widgets core
 
 SOURCES += \
     main.cpp \
-    stringwidget.cpp
+    stringfield.cpp \
+    integerfield.cpp \
+    objectfield.cpp \
+    abstractfield.cpp \
+    formwidget.cpp
 
 HEADERS += \
-    stringform.h \
-    stringwidget.h
+    stringfield.h \
+    integerfield.h \
+    objectfield.h \
+    abstractfield.h \
+    formwidget.h
+
+RESOURCES += \
+    resource.qrc
